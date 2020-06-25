@@ -1,0 +1,101 @@
+/* home page styling */
+
+.App-header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  //justify-content: center;
+  margin: 20px;
+  border-bottom: 2px solid black;
+}
+
+.logo {
+  width: 300px;
+  height: auto;
+  padding: 10px;
+}
+
+.header-text {
+  padding: 10px;
+  font-weight: 400;
+}
+
+.central-content {
+  text-align: center;
+  padding-top: 50px;
+}
+
+.central-content p {
+  font-weight: 500;
+}
+
+.run-button {
+  background-color: white;
+  border: 2px solid #004890;
+  padding: 10px;
+}
+
+.run-button:hover {
+  background-color: #004890;
+  cursor: pointer;
+  color: white;
+}
+
+/* modal styling */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1040;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+  opacity: .5;
+}
+
+.modal-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1050;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  outline: 0;
+}
+
+.modal {
+  z-index: 100;
+  background: white;
+  position: relative;
+  margin: 1.75rem auto;
+  border-radius: 3px;
+  max-width: 500px;
+  padding: 2rem;
+}
+
+.modal h4 {
+  font-weight: 500;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: center;
+}
+
+.close-button {
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1;
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  right: 30px;
+}
+
+.close-button:hover {
+  color: #004890;
+}
