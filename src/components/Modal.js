@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import ModalContent from './ModalContent.js';
 
 const Modal = ({ isOpen, hide }) => isOpen ? ReactDOM.createPortal(
   <React.Fragment>
@@ -12,6 +13,7 @@ const Modal = ({ isOpen, hide }) => isOpen ? ReactDOM.createPortal(
         </div>
         <h4>
           Korak 1. Odaberite proizvođača vašeg vozila
+          <ModalContent />
         </h4>
       </div>
     </div>

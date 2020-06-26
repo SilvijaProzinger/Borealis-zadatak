@@ -73,7 +73,7 @@
   margin: 1.75rem auto;
   border-radius: 3px;
   max-width: 500px;
-  padding: 2rem;
+  padding: 4rem;
 }
 
 .modal h4 {
@@ -98,4 +98,21 @@
 
 .close-button:hover {
   color: #004890;
+}
+
+.navigation-buttons {
+  float: right;
+}
+
+.navigation-button {
+  background-color: white;
+  border: 2px solid #004890;
+  padding: 10px;
+  margin: 0 10px 0 10px;
+}
+
+.navigation-button:hover {
+  background-color: #004890;
+  cursor: pointer;
+  color: white;
 }
