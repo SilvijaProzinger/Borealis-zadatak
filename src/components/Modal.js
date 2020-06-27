@@ -8,13 +8,10 @@ const Modal = ({ isOpen, hide }) => isOpen ? ReactDOM.createPortal(
     <div className="modal-wrapper">
       <div className="modal">
         <div className="modal-header">
-          <h3>Konfigurator servisa</h3>
+          <h2>Konfigurator servisa</h2>
           <button className="close-button" onClick={hide}>X</button>
         </div>
-        <h4>
-          Korak 1. Odaberite proizvođača vašeg vozila
-          <ModalContent />
-        </h4>
+        <ModalContent />
       </div>
     </div>
   </React.Fragment>, document.body

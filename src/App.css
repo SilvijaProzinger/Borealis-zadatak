@@ -72,7 +72,7 @@
   position: relative;
   margin: 1.75rem auto;
   border-radius: 3px;
-  max-width: 500px;
+  max-width: 50vw;
   padding: 4rem;
 }
 
@@ -83,6 +83,11 @@
 .modal-header {
   display: flex;
   justify-content: center;
+  border-bottom: 1px solid black;
+}
+
+.modal-header h2 {
+  font-weight: 500;
 }
 
 .close-button {
@@ -115,4 +120,25 @@
   background-color: #004890;
   cursor: pointer;
   color: white;
+}
+
+/* proizvodjac modal stylin */
+
+.proizvodjac-forma {
+  margin: 20px 0 20px 0;
+}
+
+.step-title {
+  font-weight: 500;
+}
+
+.proizvodjac-option {
+  padding: 0 25px 25px 0;
+}
+
+.unclickable-button {
+  background-color: white;
+  border: 2px solid gray;
+  padding: 10px;
+  margin: 0 10px 0 10px;
 }
