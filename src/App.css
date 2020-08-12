@@ -122,7 +122,7 @@
   color: white;
 }
 
-/* proizvodjac modal stylin */
+/* proizvodjac modal styling */
 
 .proizvodjac-forma {
   margin: 20px 0 20px 0;
@@ -141,4 +141,19 @@
   border: 2px solid gray;
   padding: 10px;
   margin: 0 10px 0 10px;
+}
+
+/* usluga modal styling */
+
+.usluga-forma {
+  margin: 20px 0 20px 0;
+}
+
+.usluga-option {
+  padding: 0 25px 25px 0;
+}
+
+.cijena {
+  font-weight: 500;
+  text-align: right;
 }

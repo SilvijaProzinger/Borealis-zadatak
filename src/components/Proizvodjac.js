@@ -9,11 +9,11 @@ const Proizvodjac = ({ handleOptionChange, selectedOption, prevStep, nextStep })
     <div className="proizvodjac-forma">
     {/* map through proizvodjaci array and create radio buttons */ }
       {proizvodjaci.map(function(proizvodjac){
-        return <label className="proizvodjac-option" key={proizvodjac.id}>
+        return <label className="proizvodjac-option" key={proizvodjac}>
           <input type="radio"
             value={proizvodjac}
             name="proizvodjaci"
-            key={proizvodjac.id}
+            key={proizvodjac}
             onChange={handleOptionChange}
           />
           {proizvodjac}
