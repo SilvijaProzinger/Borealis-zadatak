@@ -10,6 +10,8 @@ function ModalContent() {
  const { cijena, checked } = total
  const [checkedOption, setChecked] = useState([])
 
+ const [kuponInput, setInput] = useState(false)
+
  const nextStep = () => {
     setStep(step + 1)
     console.log(step)
@@ -44,14 +46,30 @@ function ModalContent() {
 		setTotal({ cijena: cijena - parseInt(value), checked: checked.filter(id => id !== index) })
 		setChecked(values => [...values, value])
 	}
+
+ 	/*if (event.target.type === 'checkbox' && event.target.checked){
+ 		setChecked(values => [...values, value])
+ 	} else {
+ 		let index = values.indexOf(value)
+ 		if (index > -1){
+ 			values.splice(index, 1)
+ 			setChecked({checkedOption: values})
+ 		}
+ 		//totalVal -= parseInt(value, 10)
+ 	}
+ 	let reducer = (total, amount) => total + amount
+ 	let totalVal = values.reduce(reducer)
+ 	console.log('total:', totalVal)
+ 	setTotal({total: totalVal})
+ 	*/
  }
 
  //log out the value of selected option since setOption is async operation
   useEffect(() => {
-    console.log(selectedOption, checkedOption, cijena); 
-  }, [selectedOption, checkedOption, cijena]);
+    console.log(selectedOption, checkedOption, checked, cijena); 
+  }, [selectedOption, checkedOption, checked, cijena]);
 
- const props = {  nextStep, prevStep, handleOptionChange, selectedOption, handleCheckbox, checkedOption, cijena }
+ const props = {  nextStep, prevStep, handleOptionChange, selectedOption, handleCheckbox, checkedOption, cijena, kuponInput }
 
  {/* conditional switch statement will let us render the modal content step by step */}
  switch(step) {
