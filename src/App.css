@@ -106,7 +106,7 @@
 }
 
 .navigation-buttons {
-  float: right;
+  text-align: right;
 }
 
 .navigation-button {
@@ -147,6 +147,7 @@
 
 .usluga-forma {
   margin: 20px 0 20px 0;
+  padding-bottom: 30px;
 }
 
 .usluga-option {
@@ -156,4 +157,22 @@
 .cijena {
   font-weight: 500;
   text-align: right;
+}
+
+.kupon {
+  margin: 20px 0 20px 0;
+  text-align: right;
+}
+
+input {
+  padding: 10px;
+}
+
+/* kontakt podaci modal styling */
+.kontakt-option {
+  padding: 20px;
+}
+
+.kontakt-option input {
+  padding: 0;
 }

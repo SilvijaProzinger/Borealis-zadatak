@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Proizvodjac from './Proizvodjac.js';
 import Usluga from './Usluga.js';
+import KontaktPodaci from './KontaktPodaci.js';
 
 function ModalContent() {
  const [step, setStep] = useState(1)
@@ -11,6 +12,10 @@ function ModalContent() {
  const [checkedOption, setChecked] = useState([])
 
  const [kuponInput, setInput] = useState(false)
+ const [kuponValue, setKuponValue] = useState('')
+ const [kuponAlert, setKuponAlert] = useState('')
+
+ const [contactInfo, setContactInfo] = useState()
 
  const nextStep = () => {
     setStep(step + 1)
@@ -23,12 +28,12 @@ function ModalContent() {
  }
 
  //update selected option to be the value of event target
- const handleOptionChange = (event) => {
+ const handleOptionChange = event => {
  	let value = event.target.value
 	setOption({selectedOption: value});
  }
 
- const handleCheckbox = (event) => {
+ const handleCheckbox = event => {
  	//get value of checked box
 	let value = parseInt(event.target.value, 10)
  	console.log(value)
@@ -64,12 +69,31 @@ function ModalContent() {
  	*/
  }
 
+const openKuponInput = event => {
+	setInput(true)
+}
+
+const handleKuponChange = event => {
+	setKuponValue(event.target.value)
+}
+
+const checkKuponValue = event => {
+	if (kuponValue === 'Tokic123'){
+		setTotal({ cijena: cijena - (cijena * 30 / 100)})
+		setKuponAlert('Čestitamo! Ostvarili ste 30% popusta!')
+		setInput(false)
+	} else {
+		setKuponAlert('Molimo unesite ispravni kupon!')
+		setKuponValue('')
+	}
+}
+
  //log out the value of selected option since setOption is async operation
   useEffect(() => {
-    console.log(selectedOption, checkedOption, checked, cijena); 
-  }, [selectedOption, checkedOption, checked, cijena]);
+    console.log(selectedOption, checkedOption, checked, cijena, contactInfo); 
+  }, [selectedOption, checkedOption, checked, cijena, contactInfo]);
 
- const props = {  nextStep, prevStep, handleOptionChange, selectedOption, handleCheckbox, checkedOption, cijena, kuponInput }
+ const props = {  nextStep, prevStep, handleOptionChange, selectedOption, handleCheckbox, checkedOption, cijena, kuponInput, openKuponInput, handleKuponChange, checkKuponValue, kuponValue, kuponAlert, contactInfo }
 
  {/* conditional switch statement will let us render the modal content step by step */}
  switch(step) {
@@ -77,6 +101,8 @@ function ModalContent() {
  		return <Proizvodjac {...props} />
  	case 2: 
  		return <Usluga {...props} />
+ 	case 3:
+ 		return <KontaktPodaci {...props} />
  	default:
  		return null
  }

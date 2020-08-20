@@ -9,7 +9,7 @@ const usluge = [
   { 'usluga': 'Zamjena ulja u kočnicama', 'cijena': 229, 'key': 5 }
 ]
 
-const Usluga = ({checkedOption, handleCheckbox, nextStep, prevStep, cijena, kuponInput}) => {
+const Usluga = ({checkedOption, handleCheckbox, nextStep, prevStep, cijena, kuponInput, openKuponInput, kuponValue, handleKuponChange, checkKuponValue, kuponAlert}) => {
   
   return (
     <>
@@ -25,14 +25,15 @@ const Usluga = ({checkedOption, handleCheckbox, nextStep, prevStep, cijena, kupo
           /> {usluga.usluga} ({usluga.cijena} kn)</label> 
         })}
       </div>
+      <div className="kupon">
+      {kuponInput ? 
+        <label className="kupon-input"><input type="text" placeholder="Unesite kupon ovdje" value={kuponValue} onChange={handleKuponChange}/><button className="navigation-button" onClick={checkKuponValue}>Primjeni</button></label> : 
+        <a className="open-kupon" href="#" onClick={openKuponInput}>Imam kupon</a>
+      }
+      <h3>{kuponAlert}</h3>
+      </div>
       <h3 className="cijena">UKUPNO: {cijena} kn</h3>
     </div> 
-    <div className="kupon">
-      {kuponInput ? 
-        <label className="kupon-input"><input type="text" value="" placeholder="Unesite kupon ovdje" name="kupon"/><button className="primjeni-button">Primjeni</button></label> : 
-        <a className="open-kupon" href="#">Imam kupon</a>
-      }
-    </div>
     <div className="navigation-buttons">
       <button className="navigation-button" onClick={prevStep}>Nazad</button>
       {cijena !== 0 ? <button className="navigation-button" onClick={nextStep}>Dalje</button> : 
