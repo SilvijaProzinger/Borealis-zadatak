@@ -16,13 +16,13 @@ const Usluga = ({checkedOption, handleCheckbox, nextStep, prevStep, cijena, kupo
     <div>
       <h3 className="step-title">Korak 2. Odaberite jednu ili više usluga</h3>
       <div className="usluga-forma">
-        {usluge.map(function(usluga, key){
+        {usluge.map(function(usluga){
           return <label className="usluga-option" key={usluga.key}>
           <input type="checkbox"
             value={usluga.cijena}
             name="usluge"
             onClick={handleCheckbox}
-          /> {usluga.usluga} ({usluga.cijena} kn)</label> 
+          /> {usluga.usluga} ({usluga.cijena} kn)</label>
         })}
       </div>
       <div className="kupon">

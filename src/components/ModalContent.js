@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Proizvodjac from './Proizvodjac.js';
 import Usluga from './Usluga.js';
 import KontaktPodaci from './KontaktPodaci.js';
+import PotvrdaOdabira from './PotvrdaOdabira.js';
 
 function ModalContent() {
  const [step, setStep] = useState(1)
@@ -15,7 +16,7 @@ function ModalContent() {
  const [kuponValue, setKuponValue] = useState('')
  const [kuponAlert, setKuponAlert] = useState('')
 
- const [contactInfo, setContactInfo] = useState()
+ const [contactInfo, setContactInfo] = useState({ ime: '', telefon: '', email: ''})
 
  const nextStep = () => {
     setStep(step + 1)
@@ -88,12 +89,20 @@ const checkKuponValue = event => {
 	}
 }
 
+const handleContactInfo = event => {
+	let value = event.target.value
+	setContactInfo({
+		...contactInfo,
+		[event.target.name]: value
+	})
+}
+
  //log out the value of selected option since setOption is async operation
   useEffect(() => {
     console.log(selectedOption, checkedOption, checked, cijena, contactInfo); 
   }, [selectedOption, checkedOption, checked, cijena, contactInfo]);
 
- const props = {  nextStep, prevStep, handleOptionChange, selectedOption, handleCheckbox, checkedOption, cijena, kuponInput, openKuponInput, handleKuponChange, checkKuponValue, kuponValue, kuponAlert, contactInfo }
+ const props = {  nextStep, prevStep, handleOptionChange, selectedOption, handleCheckbox, checkedOption, cijena, kuponInput, openKuponInput, handleKuponChange, checkKuponValue, kuponValue, kuponAlert, contactInfo, handleContactInfo }
 
  {/* conditional switch statement will let us render the modal content step by step */}
  switch(step) {
@@ -103,6 +112,8 @@ const checkKuponValue = event => {
  		return <Usluga {...props} />
  	case 3:
  		return <KontaktPodaci {...props} />
+ 	case 4:
+ 		return <PotvrdaOdabira {...props} />
  	default:
  		return null
  }

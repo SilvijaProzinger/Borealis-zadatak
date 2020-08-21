@@ -17,7 +17,7 @@ const Proizvodjac = ({ handleOptionChange, selectedOption, prevStep, nextStep })
             onChange={handleOptionChange}
           />
           {proizvodjac}
-        </label> 
+        </label>
       },this)}
     </div>
     <div className="navigation-buttons">

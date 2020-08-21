@@ -170,9 +170,25 @@ input {
 
 /* kontakt podaci modal styling */
 .kontakt-option {
-  padding: 20px;
+  padding: 5px;
 }
 
 .kontakt-option input {
-  padding: 0;
+  padding: 5px;
+}
+
+.kontakt-forma {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 0.5fr);
+  grid-column-gap: 0;
+  grid-row-gap: 0;
+  justify-items: center;
+  margin: 20px 0 20px 0;
+}
+
+@media only screen and (max-width: 650px){
+  .kontakt-forma {
+    grid-template-columns: 0;
+  }
 }
