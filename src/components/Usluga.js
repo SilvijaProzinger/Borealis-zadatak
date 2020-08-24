@@ -9,7 +9,7 @@ const usluge = [
   { 'usluga': 'Zamjena ulja u kočnicama', 'cijena': 229, 'key': 5 }
 ]
 
-const Usluga = ({checkedOption, handleCheckbox, nextStep, prevStep, cijena, kuponInput, openKuponInput, kuponValue, handleKuponChange, checkKuponValue, kuponAlert}) => {
+const Usluga = ({ checkedOption, handleCheckbox, nextStep, prevStep, cijena, kuponInput, openKuponInput, kuponValue, handleKuponChange, checkKuponValue, kuponAlert }) => {
   
   return (
     <>
@@ -20,7 +20,7 @@ const Usluga = ({checkedOption, handleCheckbox, nextStep, prevStep, cijena, kupo
           return <label className="usluga-option" key={usluga.key}>
           <input type="checkbox"
             value={usluga.cijena}
-            name="usluge"
+            name={usluga.usluga}
             onClick={handleCheckbox}
           /> {usluga.usluga} ({usluga.cijena} kn)</label>
         })}

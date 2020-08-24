@@ -187,6 +187,23 @@ input {
   margin: 20px 0 20px 0;
 }
 
+/* potvrdi odabir modal styling */
+
+.edit-forma {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.edit-podaci {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
 @media only screen and (max-width: 650px){
   .kontakt-forma {
     grid-template-columns: 0;

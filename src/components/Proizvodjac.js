@@ -18,10 +18,10 @@ const Proizvodjac = ({ handleOptionChange, selectedOption, prevStep, nextStep })
           />
           {proizvodjac}
         </label>
-      },this)}
+      })}
     </div>
     <div className="navigation-buttons">
-      {selectedOption ? <button className="navigation-button" onClick={nextStep}>Dalje</button> : 
+      {selectedOption.proizvodjac ? <button className="navigation-button" onClick={nextStep}>Dalje</button> : 
       <button className="unclickable-button">Dalje</button>
       }
     </div>
