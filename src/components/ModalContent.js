@@ -28,6 +28,10 @@ function ModalContent() {
     console.log(step)
  }
 
+ const goToStep = (section) => {
+ 	setStep(section)
+ }
+
  //update selected option to be the value of event target
  const handleOptionChange = event => {
  	let value = event.target.value
@@ -53,22 +57,6 @@ function ModalContent() {
 		setOption({ ...selectedOption, cijena: cijena - parseInt(value), checked: checked.filter(id => id !== index) })
 		setChecked(values => [...values, value])
 	}
-
- 	/*if (event.target.type === 'checkbox' && event.target.checked){
- 		setChecked(values => [...values, value])
- 	} else {
- 		let index = values.indexOf(value)
- 		if (index > -1){
- 			values.splice(index, 1)
- 			setChecked({checkedOption: values})
- 		}
- 		//totalVal -= parseInt(value, 10)
- 	}
- 	let reducer = (total, amount) => total + amount
- 	let totalVal = values.reduce(reducer)
- 	console.log('total:', totalVal)
- 	setTotal({total: totalVal})
- 	*/
  }
 
 const openKuponInput = event => {
@@ -103,7 +91,7 @@ const handleContactInfo = event => {
     console.log(selectedOption, selectedOption.checked); 
   }, [selectedOption, selectedOption.checked]);
 
- const props = {  step, nextStep, prevStep, handleOptionChange, selectedOption, handleCheckbox, cijena, kuponInput, openKuponInput, handleKuponChange, checkKuponValue, kuponAlert, handleContactInfo }
+ const props = {  step, nextStep, prevStep, handleOptionChange, selectedOption, handleCheckbox, cijena, kuponInput, openKuponInput, handleKuponChange, checkKuponValue, kuponAlert, handleContactInfo, goToStep }
 
  {/* conditional switch statement will let us render the modal content step by step */}
  switch(step) {

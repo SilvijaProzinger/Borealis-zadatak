@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PotvrdaOdabira = ({ prevStep, nextStep, step, selectedOption }) => {
+const PotvrdaOdabira = ({ prevStep, nextStep, step, goToStep, selectedOption, cijena }) => {
   const { go } = step
   return (
     <>
@@ -8,26 +8,31 @@ const PotvrdaOdabira = ({ prevStep, nextStep, step, selectedOption }) => {
       <h4 className="explanation">Molimo vas da još jednom pregledate i potvrdite unesene podatke. Ukoliko želite promijeniti neke od podataka, možete pritisnuti gumb za uređivanje pored svake od kategorija. Kada ste provjerili i potvrdili ispravnost svojih podataka pritisnite gumb pošalji na dnu, za slanje upita za servis.</h4>
       <div className="edit-forma">
         <div>
-          <h3>MODEL VOZILA</h3>
+          <h3>MODEL VOZILA</h3><button className="navigation-button" onClick={() => goToStep(1)}>Edit</button>
           <p>{selectedOption.proizvodjac}</p>
         </div>
         <div>
-          <h3>ODABRANE USLUGE</h3>
+          <h3>ODABRANE USLUGE</h3><button className="navigation-button" onClick={() => goToStep(2)}>Edit</button>
           <div className="edit-usluge">
-            <p>{selectedOption.checked}</p>
-            <p>{selectedOption.cijena}</p>
-            <p>Popust (30%): -250 kn</p>
-            <p>UKUPNO: {selectedOption.cijena}</p>
-          </div>
+            {selectedOption.checked.map(function(usluga){
+              return <div style={{display: 'flex', justifyContent: 'space-between'}}><h4>{usluga}</h4><h4 style={{textAlign: 'right'}}>{selectedOption.cijena}</h4></div>
+            })}
+            <div style={{textAlign: 'right'}}>
+            {selectedOption.kuponValue ? 
+              <div><p>Popust (30%): {cijena * 30 / 100}</p><p>UKUPNO: {selectedOption.cijena}</p></div>
+              : <p style={{fontWeight: 'bold'}}>UKUPNO: {selectedOption.cijena}</p>
+            }
+            </div>
+         </div>
         </div>
       </div>
       <div>
-        <h3>KONTAKT PODACI</h3>
+        <h3>KONTAKT PODACI</h3><button className="navigation-button" onClick={() => goToStep(3)}>Edit</button>
         <div className="edit-podaci">
-          <p>Ime i prezime: {selectedOption.ime}</p>
-          <p>Broj telefona: {selectedOption.telefon}</p>
-          <p>Email adresa: {selectedOption.email}</p>
-          <p>Napomena: {selectedOption.napomena}</p>
+          <p><h4>Ime i prezime:</h4> {selectedOption.ime}</p>
+          <p><h4>Broj telefona:</h4> {selectedOption.telefon}</p>
+          <p><h4>Email adresa:</h4> {selectedOption.email}</p>
+          <p><h4>Napomena:</h4> {selectedOption.napomena}</p>
         </div>
       </div>
       <div className="navigation-buttons">
