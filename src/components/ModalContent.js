@@ -3,20 +3,29 @@ import Proizvodjac from './Proizvodjac.js';
 import Usluga from './Usluga.js';
 import KontaktPodaci from './KontaktPodaci.js';
 import PotvrdaOdabira from './PotvrdaOdabira.js';
+import PrijavaPoslana from './PrijavaPoslana.js';
 
 function ModalContent() {
  const [step, setStep] = useState(1)
- const [selectedOption, setOption] = useState({ proizvodjac: '', cijena: 0, checked: [], kuponValue: '', ime: '', telefon: '', email: '', napomena: ''})
+ const [selectedOption, setOption] = useState({ 
+ 	proizvodjac: '', 
+ 	//radioButton: '',
+ 	cijena: 0, 
+ 	checked: [], 
+ 	//checkBoxes: [],
+ 	kuponValue: '', 
+ 	ime: '', 
+ 	telefon: '', 
+ 	email: '', 
+ 	napomena: ''
+ })
 
- //const [total, setTotal] = useState({ cijena: 0, checked: [] })
  const { cijena, checked } = selectedOption
  const [checkedOption, setChecked] = useState([])
 
  const [kuponInput, setInput] = useState(false)
- //const [kuponValue, setKuponValue] = useState('')
  const [kuponAlert, setKuponAlert] = useState('')
 
- //const [contactInfo, setContactInfo] = useState({ ime: '', telefon: '', email: ''})
 
  const nextStep = () => {
     setStep(step + 1)
@@ -44,18 +53,21 @@ function ModalContent() {
 	let usluga = event.target.name
  	console.log(value)
 
- 	//save all checked values and find index of selected/unselected checkbox in values array
- 	let values  = [ checkedOption ] 	
- 	let index = values.indexOf(usluga)
- 	console.log(index)
-
  	//if the value is selected add it or if it's unselected subtract it from total object
 	if (event.target.type === 'checkbox' && event.target.checked){
-		setOption({ ...selectedOption, cijena: cijena + parseInt(value), checked: [...checked, usluga] })
-		setChecked(values => [...values, value])
+		setOption(selectedOption => ({
+			...selectedOption, 
+			cijena: cijena + parseInt(value), 
+			checked: [...checked, usluga]
+		}))
+		setChecked([...checkedOption, value])
 	} else {
-		setOption({ ...selectedOption, cijena: cijena - parseInt(value), checked: checked.filter(id => id !== index) })
-		setChecked(values => [...values, value])
+		setOption(selectedOption => ({
+			...selectedOption, 
+			cijena: cijena - parseInt(value), 
+			checked: checked.filter(item => item !== usluga)
+		}))
+		setChecked(checkedOption.filter(item => item !== value))
 	}
  }
 
@@ -88,10 +100,10 @@ const handleContactInfo = event => {
 
  //log out the value of selected option since setOption is async operation
   useEffect(() => {
-    console.log(selectedOption, selectedOption.checked); 
-  }, [selectedOption, selectedOption.checked]);
+    console.log(selectedOption, 'checked prices:', checkedOption, 'checked services:', checked ); 
+  }, [selectedOption, checkedOption, checked]);
 
- const props = {  step, nextStep, prevStep, handleOptionChange, selectedOption, handleCheckbox, cijena, kuponInput, openKuponInput, handleKuponChange, checkKuponValue, kuponAlert, handleContactInfo, goToStep }
+ const props = {  step, nextStep, prevStep, handleOptionChange, selectedOption, checkedOption, handleCheckbox, cijena, kuponInput, openKuponInput, handleKuponChange, checkKuponValue, kuponAlert, handleContactInfo, goToStep }
 
  {/* conditional switch statement will let us render the modal content step by step */}
  switch(step) {
@@ -103,6 +115,8 @@ const handleContactInfo = event => {
  		return <KontaktPodaci {...props} />
  	case 4:
  		return <PotvrdaOdabira {...props} />
+ 	case 5: 
+ 		return <PrijavaPoslana />
  	default:
  		return null
  }

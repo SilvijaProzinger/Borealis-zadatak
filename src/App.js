@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img className="logo" alt="" src="https://www.tokic.hr/wp-content/uploads/2018/09/tokic-logo.jpg"/>
+        <img className="logo" alt="" src="https://www.amcham.hr/storage/upload/novosti/tokic_-_500x400_94015.jpg"/>
         <div className="header-text">
           <h2>Konfigurator servisa</h2>
           <h3>Izračunajte trošak servisa</h3>

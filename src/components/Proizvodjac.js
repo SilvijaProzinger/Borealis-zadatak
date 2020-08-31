@@ -13,7 +13,6 @@ const Proizvodjac = ({ handleOptionChange, selectedOption, prevStep, nextStep })
           <input type="radio"
             value={proizvodjac}
             name="proizvodjaci"
-            key={proizvodjac}
             onChange={handleOptionChange}
           />
           {proizvodjac}
