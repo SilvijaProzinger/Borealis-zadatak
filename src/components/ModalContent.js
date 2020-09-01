@@ -9,10 +9,8 @@ function ModalContent() {
  const [step, setStep] = useState(1)
  const [selectedOption, setOption] = useState({ 
  	proizvodjac: '', 
- 	//radioButton: '',
  	cijena: 0, 
  	checked: [], 
- 	//checkBoxes: [],
  	kuponValue: '', 
  	ime: '', 
  	telefon: '', 
